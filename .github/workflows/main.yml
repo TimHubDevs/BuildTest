@@ -36,12 +36,10 @@ jobs:
         with:
          webhook: ${{ secrets.DISCORD_WEBHOOK }}
          status: ${{ job.status }}
-         message: |
-            Workflow on main branch
-            ${{ job.status }}. Build ${{ job.status == 'success' && 'successful' || 'failed' }}.
-         content: "Hey <@316911818725392384>"
+         content: "Hey <@uniquearcher>"
          title: "deploy"
-         description: "Build and deploy to GitHub Pages"
+         description: "Workflow on main branch
+            ${{ job.status }}. Build ${{ job.status == 'success' && 'successful' || 'failed' }}."
          image: ${{ secrets.EMBED_IMAGE }}
          color: 0x0000ff
          url: "https://github.com/sarisia/actions-status-discord"
