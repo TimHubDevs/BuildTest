@@ -52,7 +52,17 @@ jobs:
           USERNAME=$(echo "${{ steps.github_user.outputs.username }}")
           echo "GitHub user who triggered the action: $USERNAME"
 
-      
+      - name: unity-get-version-github-action
+        uses: akiojin/unity-get-version-github-action@v1.1.4
+        id: unity-get-version
+        with:
+          project-directory: <Unity project path>
+
+      - name: echo Unity version
+        env:
+          VERSION: ${{ steps.unity-get-version.outputs.version }}
+        run: |
+         echo $VERSION
         
 
       # Output
