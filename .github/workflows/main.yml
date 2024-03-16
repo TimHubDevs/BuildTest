@@ -37,10 +37,11 @@ jobs:
         with:
          webhook: ${{ secrets.DISCORD_WEBHOOK }}
          status: ${{ job.status }}
-         content: "Hey <@uniquearcher>"
+         content: "Hey <${{ steps.github_user.outputs.username }}>"
          title: "deploy"
          description: "Workflow on main branch
-            ${{ job.status }}. Build ${{ job.status == 'success' && 'successful' || 'failed' }}."
+            ${{ job.status }}. Build ${{ job.status == 'success' && 'successful' || 'failed' }}. 
+            Unity version: ${{ steps.unity-get-version.outputs.version }}"
          image: ${{ secrets.EMBED_IMAGE }}
          color: 0x0000ff
          url: "https://github.com/sarisia/actions-status-discord"
@@ -56,7 +57,7 @@ jobs:
         uses: akiojin/unity-get-version-github-action@v1.1.4
         id: unity-get-version
         with:
-          project-directory: <Unity project path>
+          project-directory: ProjectSettings
 
       - name: echo Unity version
         env:
