@@ -21,6 +21,7 @@ jobs:
           restore-keys: |
             Library-
 
+      
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v4
@@ -45,6 +46,14 @@ jobs:
          url: "https://github.com/sarisia/actions-status-discord"
          username: GitHub Actions
          avatar_url: ${{ secrets.AVATAR_URL }}
+      
+      - name: Use Username
+        run: |
+          USERNAME=$(echo "${{ steps.github_user.outputs.username }}")
+          echo "GitHub user who triggered the action: $USERNAME"
+
+      
+        
 
       # Output
       - uses: actions/upload-artifact@v3
