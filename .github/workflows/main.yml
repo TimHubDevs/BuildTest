@@ -56,8 +56,6 @@ jobs:
       - name: unity-get-version-github-action
         uses: akiojin/unity-get-version-github-action@v1.1.4
         id: unity-get-version
-        with:
-          project-directory: ProjectSettings
 
       - name: echo Unity version
         env:
